@@ -27,6 +27,10 @@ Test Case 2:
 
         the search results for "semrush ai" should be displayed
 
+        the user clicks filter button "Images"
+
+        that button should be highlighted
+
 Test Case 3:
     Search with empty input
 
