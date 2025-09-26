@@ -1,0 +1,42 @@
+Test Scenario: 
+    Verify the search functionality of an search engine Ecosia with added filters
+
+Test Case 1: 
+    Successful search with valid input
+
+    Preconditions:
+        homepage address
+    Steps: 
+        the user is on the homepage
+
+        the user enters "semrush ai" in the search bar and clicks enter
+
+        the search results for "semrush ai" should be displayed
+
+Test Case 2:
+    Search with mixed case input
+
+    Preconditions:
+        homepage address
+    Steps: 
+        the user is on the homepage
+
+        the user enters "SeMrUsH Ai" in the search bar
+
+        the user clicks the search button
+
+        the search results for "semrush ai" should be displayed
+
+Test Case 3:
+    Search with empty input
+
+    Preconditions:
+        homepage address
+    Steps: 
+        the user is on the homepage
+
+        the user leaves the search bar empty
+
+        the user clicks the search button
+
+        then a message prompting to enter a search term should be displayed

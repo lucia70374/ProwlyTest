@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "Tatjana Vasovic Bursac",
   "license": "ISC",
-  "description": "Automated Playwright tests with Gherkin syntax using Cucumber.js and Typescript, with added test scenario/scripts for Prowly application.",
+  "description": "Automated Playwright tests with Gherkin syntax using Cucumber.js and Typescript, with added test scenario/cases.",
   "devDependencies": {
     "@cucumber/cucumber": "^12.2.0",
     "@playwright/test": "^1.55.1",
