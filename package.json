@@ -1,0 +1,21 @@
+{
+  "name": "prowlytest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cucumber-js",
+    "test:chrome": "npx cucumber-js --profile chrome",
+    "test:firefox": "npx cucumber-js --profile firefox"
+  },
+  "keywords": [],
+  "author": "Tatjana Vasovic Bursac",
+  "license": "ISC",
+  "description": "Automated Playwright tests with Gherkin syntax using Cucumber.js and Typescript, with added test scenario/scripts for Prowly application.",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.5.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
+  }
+}
