@@ -1,9 +1,18 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { expect, Page } from '@playwright/test';
+import { expect } from '@playwright/test';
 import { CustomWorld } from '../support/custom-world';
 
 Given('the user is on the homepage', async function (this: CustomWorld) {
     await this.page.goto('/');
+});
+
+When ('the user accepts cookies', async function (this: CustomWorld) {
+    // Dismiss cookie banner if present
+    const cookieButton = this.page.getByRole('button', { name: 'Accept all'});
+    if (await cookieButton.isVisible().catch(() => false)) {
+        await cookieButton.click();
+        await this.page.waitForTimeout(500);
+    }
 });
 
 When('the user enters {string} in the search bar and clicks enter', async function (this: CustomWorld, searchTerm: string) {
@@ -60,4 +69,18 @@ When('the user clicks filter button {string} that button should be highlighted',
             await expect(videosTab).toHaveClass('tab tab--highlighted tab--highlight-bar tab--icon');
         break;
     }
+    await this.page.screenshot({ path: `screenshots/after-${filterName}-tab-click.png` })
+});
+
+When('the user clicks the search button {string} with no input he should see a prompt {string}', async function (this: CustomWorld, searchTerm: string, message: string) {
+    const searchBar = this.page.getByTestId('search-form-input');
+    await searchBar.fill(searchTerm);
+    const searchButton = this.page.getByTestId('search-form-submit');
+    await searchButton.click();
+    const validationMessage = await searchBar.evaluate((el) => {
+        return (el as HTMLInputElement).validationMessage;
+    });
+
+    expect(validationMessage).toBe(message);
+    await this.page.screenshot({ path: `screenshots/after-empty-search-attempt.png` });
 });

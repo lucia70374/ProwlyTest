@@ -1,0 +1,190 @@
+Test Scenario: 
+    Verify the search functionality of an search engine Ecosia with added filters
+
+Test Case 1: 
+    Successful search with valid input
+
+    Preconditions:
+        the user is on the homepage
+
+        the user accepts cookies
+
+    Steps: 
+        the user is on the homepage
+
+        the user enters "semrush ai" in the search bar and clicks enter
+
+        the user clicks filter button "images"
+
+        that button should be highlighted
+
+    Expected results:
+        the search results for "semrush ai" should be displayed
+
+        filter button gets highlighted
+
+        images are filtered in results
+
+    Actual results:
+        actual results match expected results
+
+Test Case 2:
+    Successful search with typos input
+
+    Preconditions:
+        the user is on the homepage
+
+        the user accepts cookies
+    Steps: 
+        the user is on the homepage
+
+        the user enters "seeemrush aai" in the search bar and clicks enter
+
+        the user clicks filter button "news"
+
+        that button should be highlighted
+
+    Expected results:
+        the search results for "semrush ai" should be displayed
+
+        filter button gets highlighted
+
+        news are filtered in results
+
+    Actual results:
+        actual results match expected results
+
+Test Case 3:
+    Successful search with mixed case input
+
+    Preconditions:
+        the user is on the homepage
+
+        the user accepts cookies
+    Steps: 
+        the user is on the homepage
+
+        the user enters "SeMrUsH Ai" in the search bar and clicks enter
+
+        the search results for "semrush ai" should be displayed
+
+        the user clicks filter button "videos"
+
+        that button should be highlighted
+    
+    Expected results:
+        filter button gets highlighted
+
+        videos are filtered in results
+
+    Actual results:
+        actual results match expected results
+
+Test Case 4:
+    Search with empty input
+
+    Preconditions:
+        the user is on the homepage
+
+        the user accepts cookies
+    Steps: 
+        the user clicks the search button with no input " "
+
+        the user clicks the search button
+
+        the user should see a prompt "Please fill out this field." or not
+
+    Expected results:
+        until a search is typed a message reappears
+
+    Actual results:
+        actual results match expected results
+
+Test Case 5:
+    Successful search with filtering images with subfilters
+    
+    Preconditions:
+        the user is on the homepage
+
+        the user accepts cookies
+
+        user types "prowly ai tools" in the search bar and clicks with enter
+
+        text results for "prowly ai tools" should be asserted
+       
+        the user clicks Images filter button
+
+    Steps:
+        the user clicks on "All colors" subfilter
+
+        the user picks a color "Purple" from a dropdown menu
+
+    Expected results:
+        "All colors" subfilter tab changes name to "Purple"
+
+        image results take on purple color
+
+        new subfilter button appears: "Clear all"
+
+    Actual results:
+        actual results match expected results
+
+Test Case 6:
+    Successful search with filtering images with layouts
+    
+    Preconditions:
+        the user is on the homepage
+
+        the user accepts cookies
+
+        user types "prowly ai tools" in the search bar and clicks with enter
+
+        text results for "prowly ai tools" should be asserted
+       
+        the user clicks Images filter button
+
+    Steps:
+        the user clicks on "All layouts" subfilter
+
+        the user picks a layout "Square" from a dropdown menu
+
+    Expected results:
+        "All layouts" subfilter tab changes name to "Square"
+
+        image results take on square shape
+
+        new subfilter button appears: "Clear all"
+
+    Actual results:
+        actual results match expected results
+
+Test Case 7:
+    Clear all subfiltering results for the Image filter
+    
+    Preconditions:
+        the user is on the homepage
+
+        the user accepts cookies
+
+        user types "prowly ai tools" in the search bar and clicks with enter
+
+        text results for "prowly ai tools" should be asserted
+       
+        the user clicks Images filter button
+
+        the user clicks on "All layouts" filter
+
+        the user picks a layout "Square" from a dropdown menu
+
+    Steps:
+        the user clicks on "Clear all" subfilter button
+
+    Expected results:
+        "Square" subfilter tab changes name to "All layouts"
+
+        image results return to filtering all images
+
+        "Clear all" subfilter button disappears
+
+    Actual results:
+        actual results match expected results
