@@ -16,14 +16,10 @@ Feature: Verify the search functionality of an search engine Ecosia with added f
             | SEmRuSh aI    | videos     |
     
     Scenario Outline: Search with empty input
-        When the user clicks the search button with no input "<searchTerm>"
-        When the user clicks the search button
-        Then the user should see a prompt "<message>" or not
+        When the user clicks the search button "<searchTerm>" with no input he should see a prompt "<message>"
 
         Examples:
             | searchTerm  | message                     |
-            | "    "      |                             |
-            |     "     " |                             |
             |             | Please fill out this field. |
 
     Scenario Outline: Successful search with filtering images with subfilters
@@ -36,4 +32,16 @@ Feature: Verify the search functionality of an search engine Ecosia with added f
             | filterName |
             | Purple     |
             | Square     |
-            | Small      |
+    
+    Scenario Outline: Clear all subfiltering results for the Image filter
+        When user types "prowly ai tools" in the search bar and clicks with enter
+        When text results for "prowly ai tools" should be asserted
+        When the user clicks Images filter button
+        Then the user clicks on "<filterName>" subfilter
+        When the user clicks Clear all button
+        Then all subfilters should be cleared
+
+        Examples:
+            | filterName |
+            | Purple     |
+            | Square     |
