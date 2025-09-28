@@ -8,7 +8,7 @@ let browser: Browser;
 BeforeAll(async function () {
   // Launch the browser once for all scenarios
   browser = await chromium.launch({
-    headless: false, // Set Playwright options here, e.g., to run in headed mode
+    headless: process.env.CI ? true : false, // Set Playwright options here, e.g., to run in headed mode
     slowMo: 50,      // or to slow down execution
   });
   playwright.selectors.setTestIdAttribute('data-test-id');
