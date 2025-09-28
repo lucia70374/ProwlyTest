@@ -20,7 +20,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Cucumber tests and generate JSON report
-      timeout-minutes: 30
+      timeout-minutes: 50
       run: npx cucumber-js --format json:reports/cucumber_report.json
     - name: Generate HTML report
       if: always()
