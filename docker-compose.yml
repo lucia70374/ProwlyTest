@@ -13,6 +13,10 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     ipc: host
+    deploy:
+      resources:
+        limits:
+          memory: 4096M # Allocate 4 GB of memory
 
   app:
     # Build a separate image for the app service to include `curl`

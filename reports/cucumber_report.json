@@ -1,0 +1,355 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "search-functionality;successful-search-with-valid-input",
+        "keyword": "Scenario Outline",
+        "line": 14,
+        "name": "Successful search with valid input",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 618351999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user is on the homepage",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1716245100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "the user accepts cookies",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1667862600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "the user enters \"semrush ai\" in the search bar and clicks enter",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2105087499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "the search results for \"semrush ai\" should be displayed",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 671617400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "the user clicks filter button \"images\" that button should be highlighted",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4790013500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18429400
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "search-functionality;successful-search-with-valid-input",
+        "keyword": "Scenario Outline",
+        "line": 15,
+        "name": "Successful search with valid input",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 352060900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user is on the homepage",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1578296800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "the user accepts cookies",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1728298200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "the user enters \"seeemrush aai\" in the search bar and clicks enter",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2118291300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "the search results for \"seeemrush aai\" should be displayed",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 709093300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "the user clicks filter button \"news\" that button should be highlighted",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2710585999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14564299
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "search-functionality;successful-search-with-valid-input",
+        "keyword": "Scenario Outline",
+        "line": 16,
+        "name": "Successful search with valid input",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 432430199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user is on the homepage",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1671082000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "the user accepts cookies",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1665273800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "the user enters \"SEmRuSh aI\" in the search bar and clicks enter",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2058532100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "the search results for \"SEmRuSh aI\" should be displayed",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1241240599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "the user clicks filter button \"videos\" that button should be highlighted",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1879740100
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17865599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "search-functionality;search-with-empty-input",
+        "keyword": "Scenario Outline",
+        "line": 24,
+        "name": "Search with empty input",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 676891999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user is on the homepage",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1735839900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "the user accepts cookies",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1686781399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "the user clicks the search button \"\" with no input he should see a prompt \"Please fill out this field.\"",
+            "match": {
+              "location": "features\\step_definitions\\search.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2410312899
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16048899
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "search-functionality",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Search Functionality",
+    "tags": [],
+    "uri": "features\\search.feature"
+  }
+]

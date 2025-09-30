@@ -15,7 +15,7 @@ module.exports = {
     worldParameters: {
       playwright: {
         launchOptions: {
-          headless: isCI,
+          headless: true, // Force headless mode for the container
           slowMo: isCI ? 0 : 1000
         },
         contextOptions: {
