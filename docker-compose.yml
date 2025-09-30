@@ -2,13 +2,13 @@ services:
   e2e-tests:
     build: .
     container_name: playwright-cucumber-tests
-    # Do not override the entrypoint. The command is sufficient.
     command: ["npm", "run", "test:cucumber"]
     depends_on:
       app:
         condition: service_healthy
     environment:
       - APP_HOST=http://app:3000
+      - PLAYWRIGHT_HEADLESS=true # Explicitly set headless mode for the test container
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules

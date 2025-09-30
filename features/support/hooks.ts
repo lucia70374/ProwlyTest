@@ -1,38 +1,40 @@
-import { Before, After, BeforeAll, AfterAll } from '@cucumber/cucumber';
+import { Before, After, BeforeAll, AfterAll, World } from '@cucumber/cucumber';
 import { Browser, chromium, BrowserContextOptions } from 'playwright';
 import * as playwright from 'playwright';
 import { CustomWorld } from './custom-world';
 
 let browser: Browser;
+let config: {
+  playwright: {
+    launchOptions: {
+      headless: boolean;
+      slowMo: number;
+    };
+    contextOptions: BrowserContextOptions;
+  };
+};
 
 BeforeAll(async function () {
-  // Launch the browser once for all scenarios
-  const isCI = process.env.CI !== undefined;
-  browser = await chromium.launch({
-    headless: isCI, // Run in headless mode in CI
-    slowMo: process.env.CI ? 0 : 1000,   // or to slow down execution
-  });
+  // In BeforeAll, `this` is a plain object, so we manually retrieve parameters
+  const world = this as World & { parameters: typeof config.playwright };
+  config = world.parameters;
+  
+  const { launchOptions } = config.playwright;
+  browser = await chromium.launch(launchOptions);
   playwright.selectors.setTestIdAttribute('data-test-id');
 });
 
+// The Before hook has access to the CustomWorld instance via `this`
 Before(async function (this: CustomWorld) {
-  // Set context options for each scenario
-  const contextOptions: BrowserContextOptions = {
-    // Example of setting a base URL for each page
-    baseURL: 'https://www.ecosia.org/',
-    viewport: { width: 1280, height: 720 },
-  };
-
+  const { contextOptions } = config.playwright;
   const context = await browser.newContext(contextOptions);
   this.page = await context.newPage();
 });
 
 After(async function (this: CustomWorld) {
-  // Close the page after each scenario
   await this.page.close();
 });
 
 AfterAll(async function () {
-  // Close the browser after all scenarios
   await browser.close();
 });

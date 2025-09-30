@@ -1,13 +1,18 @@
-import { World, IWorldOptions, setWorldConstructor } from '@cucumber/cucumber';
-import { Page, Browser, chromium } from 'playwright';
+import { World, setWorldConstructor } from '@cucumber/cucumber';
+import { Page, BrowserContextOptions } from 'playwright';
+import { LaunchOptions } from 'playwright-core';
+
+export interface PlaywrightParameters {
+  launchOptions: LaunchOptions;
+  contextOptions: BrowserContextOptions;
+}
 
 export class CustomWorld extends World {
   public page!: Page;
-  public browser!: Browser;
-
-  constructor(options: IWorldOptions) {
-    super(options);
-  }
+  // Use the 'declare' modifier to correctly overwrite the base property
+  declare public parameters: {
+    playwright: PlaywrightParameters;
+  };
 }
 
 setWorldConstructor(CustomWorld);
