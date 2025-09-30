@@ -2,12 +2,11 @@ services:
   e2e-tests:
     build: .
     container_name: playwright-cucumber-tests
-    # Use the custom entrypoint script
-    entrypoint: ["./entrypoint.sh"]
+    # Do not override the entrypoint. The command is sufficient.
+    command: ["npm", "run", "test:cucumber"]
     depends_on:
       app:
-        # A standard `service_started` dependency is sufficient when using a wait script.
-        condition: service_started
+        condition: service_healthy
     environment:
       - APP_HOST=http://app:3000
     volumes:
@@ -16,10 +15,14 @@ services:
     ipc: host
 
   app:
-    # ... (your app service remains the same)
-    # The healthcheck is still useful for debugging but can be removed if not needed.
+    # Build a separate image for the app service to include `curl`
+    build: ./app
+    container_name: application-under-test
+    ports:
+      - "3000:3000"
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 30s
