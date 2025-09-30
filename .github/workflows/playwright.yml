@@ -15,10 +15,6 @@ jobs:
 
       - name: Build and run services with Docker Compose
         run: docker compose up --build -d
-
-      - name: Wait for services to be ready
-        run: |
-          timeout 60s sh -c 'until docker compose ps --filter "status=healthy" | grep -q app; do echo "Waiting for app service..."; sleep 2; done'
         
       - name: Run tests and generate reports in container
         run: docker compose exec -T e2e-tests npm run test
