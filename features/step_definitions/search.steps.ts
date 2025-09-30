@@ -15,7 +15,7 @@ When ('the user accepts cookies', async function (this: CustomWorld) {
     }
 });
 
-When('the user enters {string} in the search bar and clicks enter', { timeout: 7000 }, async function (this: CustomWorld, searchTerm: string) {
+When('the user enters {string} in the search bar and clicks enter', async function (this: CustomWorld, searchTerm: string) {
     const searchBar = this.page.getByTestId('search-form-input');
     switch (searchTerm){
         case "semrush ai": 
@@ -31,7 +31,7 @@ When('the user enters {string} in the search bar and clicks enter', { timeout: 7
     await this.page.keyboard.press('Enter');
 });
 
-Then('the search results for {string} should be displayed', { timeout: 7000 }, async function (this: CustomWorld, searchTerm: string) {
+Then('the search results for {string} should be displayed', async function (this: CustomWorld, searchTerm: string) {
     const header = this.page.getByTestId('related-queries-header').first();
     await header.waitFor({ state: 'visible' });
     switch (searchTerm){
@@ -47,7 +47,7 @@ Then('the search results for {string} should be displayed', { timeout: 7000 }, a
     }
 });
 
-When('the user clicks filter button {string} that button should be highlighted', { timeout: 7000 }, async function (this: CustomWorld, filterName: string) {
+When('the user clicks filter button {string} that button should be highlighted', async function (this: CustomWorld, filterName: string) {
     const filterBtn = this.page.getByLabel('Search menu').first();
     switch (filterName){
         case "images":
@@ -72,7 +72,7 @@ When('the user clicks filter button {string} that button should be highlighted',
     await this.page.screenshot({ path: `screenshots/after-${filterName}-tab-click.png` })
 });
 
-When('the user clicks the search button {string} with no input he should see a prompt {string}', { timeout: 7000 }, async function (this: CustomWorld, searchTerm: string, message: string) {
+When('the user clicks the search button {string} with no input he should see a prompt {string}', async function (this: CustomWorld, searchTerm: string, message: string) {
     const searchBar = this.page.getByTestId('search-form-input');
     await searchBar.fill(searchTerm);
     const searchButton = this.page.getByTestId('search-form-submit');
