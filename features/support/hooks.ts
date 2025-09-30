@@ -1,3 +1,4 @@
+// features/support/hooks.ts
 import { Before, After, BeforeAll, AfterAll, World } from '@cucumber/cucumber';
 import { Browser, chromium, BrowserContextOptions } from 'playwright';
 import * as playwright from 'playwright';
@@ -15,7 +16,6 @@ let config: {
 };
 
 BeforeAll(async function () {
-  // In BeforeAll, `this` is a plain object, so we manually retrieve parameters
   const world = this as World & { parameters: typeof config.playwright };
   config = world.parameters;
   
@@ -24,7 +24,6 @@ BeforeAll(async function () {
   playwright.selectors.setTestIdAttribute('data-test-id');
 });
 
-// The Before hook has access to the CustomWorld instance via `this`
 Before(async function (this: CustomWorld) {
   const { contextOptions } = config.playwright;
   const context = await browser.newContext(contextOptions);
