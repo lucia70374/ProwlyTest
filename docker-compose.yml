@@ -22,13 +22,13 @@ services:
     container_name: application-under-test
     ports:
       - "3000:3000"
-    # UPDATED: Use a command that runs indefinitely, such as 'node app.js'.
-    # For a simple example, a tail command will keep it alive.
-    command: tail -f /dev/null
-    # OR, use a command that keeps the app running:
-    # command: node -e "require('http').createServer((req, res) => res.end('Hello!')).listen(3000)"
+    # UPDATED: Use a command that runs indefinitely, and listen on 0.0.0.0.
+    command: node -e "require('http').createServer((req, res) => res.end('Hello!')).listen(3000, '0.0.0.0')"
     healthcheck:
-      test: ["CMD-SHELL", "wget -q http://localhost:3000 -O /dev/null"]
+      # Use curl, which is typically installed, or manually install wget.
+      # The command must exit with 0 for success.
+      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 30s # Give the app a grace period to start
