@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # The service for running Playwright and Cucumber tests
+  e2e-tests:
+    build: .  # Build the image from the Dockerfile in the current directory
+    container_name: playwright-cucumber-tests
+    # The command to run the tests
+    # Wait until the 'app' service is healthy before running the tests
+    command: ["./wait-for-it.sh", "app:3000", "--", "npm", "run", "test:cucumber"]
+    environment:
+      - APP_HOST=http://app:3000 # The hostname 'app' is the service name
+    volumes:
+      - .:/usr/src/app # Mount the local project directory to allow code changes
+      - /usr/src/app/node_modules # Exclude node_modules from the volume mount
+    # Enable host IPC mode for Chromium to prevent crashes
+    ipc: host
+
+  # The service for your application under test
+  app:
+    image: node:18 # Example: a simple Node.js application
+    container_name: application-under-test
+    ports:
+      - "3000:3000" # Expose the application port
+    # A dummy command for the example
+    command: ["node", "-e", "console.log('App is running...') && require('http').createServer((req, res) => res.end('Hello from the app!')).listen(3000)"]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q http://localhost:3000 -O /dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

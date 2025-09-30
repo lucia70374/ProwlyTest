@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx cucumber-js"
+    "test": "npx cucumber-js",
+    "generate-report": "node scripts/generate-report.js",
+    "test:cucumber": "cucumber-js features/**/*.feature --require features/step_definitions/*.ts --require features/support/*.ts || true && npm run generate-report"
   },
   "keywords": [],
   "author": "Tatjana Vasovic Bursac",
