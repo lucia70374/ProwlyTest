@@ -19,8 +19,9 @@ RUN npm ci
 # It should be in the same directory as your Dockerfile.
 COPY wait-for-it.sh ./
 
-# Make the script executable inside the Linux-based container.
-RUN chmod +x ./wait-for-it.sh
+# Copy the new entrypoint script and make it executable.
+COPY entrypoint.sh ./
+RUN chmod +x ./entrypoint.sh
 
 # Copy the entire project into the container.
 # This includes your feature files, step definitions, and configuration.
