@@ -1,34 +1,68 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: 
+    - main
+    - notDockerBranch
+
   pull_request:
-    branches: [ main, master ]
+    branches: 
+    - main
+    - notDockerBranch
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
+    - name: Cache Node.js modules
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+
     - name: Install dependencies
       run: npm ci
       env:
         CI: "1"
+
+    - name: Cache Playwright browsers
+      uses: actions/cache@v4
+      id: playwright-cache
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+        
     - name: Install Playwright Browsers
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
       run: npx playwright install --with-deps
+
     - name: Run Cucumber tests and generate JSON report
       timeout-minutes: 50
       run: npx cucumber-js --format json:reports/cucumber_report.json
+
     - name: Generate HTML report
       if: always()
       run: node htmlReportGenerator.js
+
+    - name: Create job summary
+      if: always()
+      run: |
+        echo "### Cucumber Test Report" >> $GITHUB_STEP_SUMMARY
+        echo "See the full report in the `cucumber-report` artifact." >> $GITHUB_STEP_SUMMARY
+
     - name: Upload report artifact
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: cucumber-report
+        name: cucumber-report-${{ github.run_id }}
         path: reports/
         retention-days: 30
