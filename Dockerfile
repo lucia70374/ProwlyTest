@@ -15,6 +15,13 @@ COPY package*.json ./
 # will be installed via `npm ci`.
 RUN npm ci
 
+# Copy the wait-for-it.sh script into the container.
+# It should be in the same directory as your Dockerfile.
+COPY wait-for-it.sh ./
+
+# Make the script executable inside the Linux-based container.
+RUN chmod +x ./wait-for-it.sh
+
 # Copy the entire project into the container.
 # This includes your feature files, step definitions, and configuration.
 COPY . .
