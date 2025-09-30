@@ -4,8 +4,8 @@ services:
   e2e-tests:
     build: .
     container_name: playwright-cucumber-tests
-    # Use the custom entrypoint script to fix permissions and wait
-    entrypoint: ["./entrypoint.sh"]
+    # Use bash to execute the script, which avoids permission issues
+    entrypoint: ["/usr/bin/env", "bash", "./entrypoint.sh"]
     command: ["npm", "run", "test:cucumber"]
     depends_on:
       app:
