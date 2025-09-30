@@ -2,9 +2,20 @@ module.exports = {
   default: {
     format: ['summary'],
     require: [
-      'features/support/**/*.ts', // Load the custom world and hooks
-      'features/step_definitions/**/*.ts' // Load step definitions
+      'features/support/**/*.ts',
+      'features/step_definitions/**/*.ts'
     ],
-    requireModule: ['ts-node/register'], // Use ts-node to run TypeScript
+    requireModule: ['ts-node/register']
+  },
+  ci: {
+    format: ['summary', 'json:reports/cucumber_report.json'],
+    require: [
+      'features/support/**/*.ts',
+      'features/step_definitions/**/*.ts'
+    ],
+    requireModule: ['ts-node/register'],
+    // A longer timeout for the CI environment (e.g., 90 seconds)
+    timeout: 90 * 1000,
   },
 };
+
