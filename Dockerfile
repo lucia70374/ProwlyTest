@@ -15,14 +15,6 @@ COPY package*.json ./
 # will be installed via `npm ci`.
 RUN npm ci
 
-# Copy the wait-for-it.sh script into the container.
-# It should be in the same directory as your Dockerfile.
-COPY wait-for-it.sh ./
-
-# Copy the new entrypoint script and make it executable.
-COPY entrypoint.sh ./
-RUN chmod +x ./entrypoint.sh
-
 # Copy the entire project into the container.
 # This includes your feature files, step definitions, and configuration.
 COPY . .
