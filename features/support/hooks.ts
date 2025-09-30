@@ -1,4 +1,3 @@
-// features/support/hooks.ts
 import { Before, After, BeforeAll, AfterAll, World } from '@cucumber/cucumber';
 import { Browser, chromium, BrowserContextOptions } from 'playwright';
 import * as playwright from 'playwright';
@@ -13,6 +12,17 @@ let config: {
     };
     contextOptions: BrowserContextOptions;
   };
+} = {
+  playwright: {
+    launchOptions: {
+      headless: false,
+      slowMo: 0,
+    },
+    contextOptions: {
+      baseURL: '',
+      viewport: { width: 1280, height: 720 },
+    },
+  },
 };
 
 BeforeAll(async function () {

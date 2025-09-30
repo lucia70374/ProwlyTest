@@ -8,7 +8,7 @@ services:
         condition: service_healthy
     environment:
       - APP_HOST=http://app:3000
-      - PLAYWRIGHT_HEADLESS=true # Explicitly set headless mode for the test container
+      - IN_DOCKER=true  # Custom flag for hooks.ts
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
