@@ -15,6 +15,9 @@ COPY package*.json ./
 # will be installed via `npm ci`.
 RUN npm ci
 
+COPY entrypoint.sh ./
+RUN chmod +x ./entrypoint.sh
+
 # Copy the entire project into the container.
 # This includes your feature files, step definitions, and configuration.
 COPY . .
