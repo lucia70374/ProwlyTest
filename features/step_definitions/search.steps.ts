@@ -8,11 +8,12 @@ Given('the user is on the homepage', async function (this: CustomWorld) {
 
 When ('the user accepts cookies', async function (this: CustomWorld) {
     // Dismiss cookie banner if present
-    const cookieButton = this.page.getByRole('button', { name: 'Accept all'});
-    if (await cookieButton.isVisible().catch(() => false)) {
-        await cookieButton.click();
-        await this.page.waitForTimeout(500);
-    }
+    await this.page.addLocatorHandler(
+        this.page.getByRole('button', { name: 'Accept all'}), 
+        async (element) => {
+            await element.click();
+        }
+    )
 });
 
 When('the user enters {string} in the search bar and clicks enter', async function (this: CustomWorld, searchTerm: string) {
